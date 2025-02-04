@@ -11,6 +11,9 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.4.1
         version: 1.4.1
+      '@tembo-io/api-client':
+        specifier: ^0.0.5
+        version: 0.0.5
       fastmcp:
         specifier: ^1.16.3
         version: 1.16.3
@@ -233,6 +236,9 @@ packages:
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@hey-api/client-fetch@0.5.7':
+    resolution: {integrity: sha512-hLpID6NCs8+stbz935UyvyGOXY44oLBSOy7ZEpwXxj977A/0U41iihDQllDoCJrxtbe06DnDgwPOn6/xnRJ71w==}
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -396,6 +402,10 @@ packages:
   '@sindresorhus/merge-streams@4.0.0':
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
+
+  '@tembo-io/api-client@0.0.5':
+    resolution: {integrity: sha512-whJRFOn5POWSNR3l0VwyYyitdU32O+AFdUU+cLpGzxLbCmxq62pNXijx63+GmF+asf05uBMMSgpgc4IEeMu7WQ==}
+    engines: {node: '>=18.3.0'}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -1512,6 +1522,8 @@ snapshots:
       '@eslint/core': 0.10.0
       levn: 0.4.1
 
+  '@hey-api/client-fetch@0.5.7': {}
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -1634,6 +1646,10 @@ snapshots:
   '@sec-ant/readable-stream@0.4.1': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
+
+  '@tembo-io/api-client@0.0.5':
+    dependencies:
+      '@hey-api/client-fetch': 0.5.7
 
   '@tokenizer/token@0.3.0': {}
 
