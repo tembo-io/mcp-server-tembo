@@ -47,7 +47,7 @@
 	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.4.1",
-		"@tembo-io/api-client": "^0.0.9",
+		"@tembo-io/api-client": "^0.0.10",
 		"zod": "^3.24.1"
 	}
 }
