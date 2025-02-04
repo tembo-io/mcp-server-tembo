@@ -26,7 +26,8 @@ git clone https://github.com/tembo-io/mcp-server-tembo.git
 
 3. Load the below tembo mcp server json config into Claude Desktop (open claude desktop > click settings > developer)
 
-> [!NOTE] You will need to [generate a API key for Tembo Cloud](https://tembo.io/docs/development/api)
+> [!NOTE]
+> You will need to [generate a API key for Tembo Cloud](https://tembo.io/docs/development/api)
 
 ```json
 {
