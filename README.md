@@ -1,4 +1,4 @@
-<h1 align="center">Mcp Server Tembo</h1>
+<h1 align="center">Tembo MCP Server</h1>
 
 <p align="center">A MCP server for the Tembo Cloud platform API</p>
 
