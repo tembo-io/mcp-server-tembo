@@ -17,5 +17,9 @@ export default tseslint.config(
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
+		rules: {
+			"@typescript-eslint/no-non-null-assertion": "off",
+			"require-await": "off",
+		},
 	},
 );

@@ -1,3 +1,11 @@
+import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import { temboClient } from "./index.js";
+import type {
+	CreateInstance,
+	PatchInstance,
+	RestoreInstance,
+} from "@tembo-io/api-client";
+
 const TOOLS = [
 	{
 		name: "get_all_apps" as const,
@@ -239,8 +247,81 @@ const TOOLS = [
 			required: ["org_id", "instance_name", "restore"],
 		},
 	},
-];
+] satisfies Tool[];
 
-const TOOL_HANDLERS = {};
+export type ToolName = (typeof TOOLS)[number]["name"];
+
+const TOOL_HANDLERS = {
+	get_all_apps: async () => {
+		return await temboClient.getAllApps();
+	},
+
+	get_app: async ({ type }: { type: string }) => {
+		return await temboClient.getApp({ path: { type } });
+	},
+
+	ask_tembo: async ({ query }: { query: string }) => {
+		return await temboClient.ask({
+			query: {
+				query,
+			},
+		});
+	},
+
+	get_instance_schema: async () => {
+		return await temboClient.getSchema();
+	},
+
+	get_all_instances: async ({ org_id }: { org_id: string }) => {
+		return await temboClient.getAll({ path: { org_id } });
+	},
+
+	create_instance: async (props: CreateInstance & { org_id: string }) => {
+		return await temboClient.createInstance({
+			body: { ...props },
+			path: { org_id: props.org_id },
+		});
+	},
+
+	get_instance: async ({
+		org_id,
+		instance_id,
+	}: {
+		org_id: string;
+		instance_id: string;
+	}) => {
+		return await temboClient.getInstance({
+			path: { org_id, instance_id },
+		});
+	},
+
+	delete_instance: async ({
+		org_id,
+		instance_id,
+	}: {
+		org_id: string;
+		instance_id: string;
+	}) => {
+		return await temboClient.deleteInstance({
+			path: { org_id, instance_id },
+		});
+	},
+
+	patch_instance: async (
+		props: PatchInstance & { org_id: string; instance_id: string },
+	) => {
+		return await temboClient.patchInstance({
+			body: { ...props },
+			path: { org_id: props.org_id, instance_id: props.instance_id },
+		});
+	},
+
+	restore_instance: async (props: RestoreInstance & { org_id: string }) => {
+		return await temboClient.restoreInstance({
+			body: { ...props },
+			path: { org_id: props.org_id },
+		});
+	},
+} as const;
 
 export { TOOLS, TOOL_HANDLERS };

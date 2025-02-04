@@ -8,6 +8,7 @@
 	},
 	"license": "MIT",
 	"author": {
+		"name": "Darren Baldwin",
 		"email": "darren@tembo.io"
 	},
 	"bin": {
@@ -46,8 +47,7 @@
 	},
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.4.1",
-		"@tembo-io/api-client": "^0.0.5",
-		"fastmcp": "^1.16.3",
+		"@tembo-io/api-client": "^0.0.9",
 		"zod": "^3.24.1"
 	}
 }
