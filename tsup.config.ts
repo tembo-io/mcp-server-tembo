@@ -6,6 +6,6 @@ export default defineConfig({
 	dts: true,
 	entry: ["src/**/*.ts"],
 	format: "esm",
-	outDir: "lib",
+	outDir: "dist",
 	sourcemap: true,
 });

@@ -10,16 +10,19 @@
 	"author": {
 		"email": "darren@tembo.io"
 	},
+	"bin": {
+		"mcp-server-tembo": "./dist/index.js"
+	},
 	"type": "module",
-	"main": "lib/index.js",
+	"main": "dist/index.js",
 	"files": [
 		"LICENSE.md",
 		"README.md",
-		"lib/",
+		"dist/",
 		"package.json"
 	],
 	"scripts": {
-		"build": "tsup",
+		"build": "tsup && chmod +x dist/index.js",
 		"format": "prettier .",
 		"lint": "eslint . --max-warnings 0",
 		"prepare": "husky",
@@ -41,5 +44,10 @@
 	},
 	"engines": {
 		"node": ">=18.3.0"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.4.1",
+		"fastmcp": "^1.16.3",
+		"zod": "^3.24.1"
 	}
 }
