@@ -10,7 +10,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 
 export const isAllowedTool = (name: string): name is ToolName => {
-	return name in TOOLS;
+	return name in TOOL_HANDLERS;
 };
 
 export const temboClient = createDefaultApiClient({
@@ -20,7 +20,7 @@ export const temboClient = createDefaultApiClient({
 const server = new Server(
 	{
 		name: "mcp-server-tembo",
-		version: "0.0.",
+		version: "0.0.1",
 	},
 	{
 		capabilities: {
