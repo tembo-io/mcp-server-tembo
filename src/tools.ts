@@ -1,11 +1,15 @@
-import { Tool } from "@modelcontextprotocol/sdk/types.js";
+import {
+	CallToolRequest,
+	CallToolResultSchema,
+	Tool,
+} from "@modelcontextprotocol/sdk/types.js";
 import { temboClient } from "./index.js";
 import type {
 	CreateInstance,
 	PatchInstance,
 	RestoreInstance,
 } from "@tembo-io/api-client";
-
+import { z } from "zod";
 const TOOLS = [
 	{
 		name: "get_all_apps" as const,
@@ -250,77 +254,170 @@ const TOOLS = [
 ] satisfies Tool[];
 
 export type ToolName = (typeof TOOLS)[number]["name"];
+export type ToolResult = z.infer<typeof CallToolResultSchema>;
+export type ToolHandlers = Record<
+	ToolName,
+	(request: CallToolRequest) => Promise<ToolResult>
+>;
 
-const TOOL_HANDLERS = {
+const TOOL_HANDLERS: ToolHandlers = {
 	get_all_apps: async () => {
-		return await temboClient.getAllApps();
+		const response = await temboClient.getAllApps();
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	get_app: async ({ type }: { type: string }) => {
-		return await temboClient.getApp({ path: { type } });
+	get_app: async (request) => {
+		const { type } = request.params.arguments as { type: string };
+		const response = await temboClient.getApp({ path: { type } });
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	ask_tembo: async ({ query }: { query: string }) => {
-		return await temboClient.ask({
+	ask_tembo: async (request) => {
+		const { query } = request.params.arguments as { query: string };
+		const response = await temboClient.ask({
 			query: {
 				query,
 			},
 		});
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
 	get_instance_schema: async () => {
-		return await temboClient.getSchema();
+		const response = await temboClient.getSchema();
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	get_all_instances: async ({ org_id }: { org_id: string }) => {
-		return await temboClient.getAll({ path: { org_id } });
+	get_all_instances: async (request) => {
+		const { org_id } = request.params.arguments as { org_id: string };
+		const response = await temboClient.getAll({ path: { org_id } });
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	create_instance: async (props: CreateInstance & { org_id: string }) => {
-		return await temboClient.createInstance({
+	create_instance: async (request) => {
+		const { org_id, ...props } = request.params.arguments as CreateInstance & {
+			org_id: string;
+		};
+		const response = await temboClient.createInstance({
 			body: { ...props },
-			path: { org_id: props.org_id },
+			path: { org_id },
 		});
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	get_instance: async ({
-		org_id,
-		instance_id,
-	}: {
-		org_id: string;
-		instance_id: string;
-	}) => {
-		return await temboClient.getInstance({
+	get_instance: async (request) => {
+		const { org_id, instance_id } = request.params.arguments as {
+			org_id: string;
+			instance_id: string;
+		};
+		const response = await temboClient.getInstance({
 			path: { org_id, instance_id },
 		});
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	delete_instance: async ({
-		org_id,
-		instance_id,
-	}: {
-		org_id: string;
-		instance_id: string;
-	}) => {
-		return await temboClient.deleteInstance({
+	delete_instance: async (request) => {
+		const { org_id, instance_id } = request.params.arguments as {
+			org_id: string;
+			instance_id: string;
+		};
+		const response = await temboClient.deleteInstance({
 			path: { org_id, instance_id },
 		});
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	patch_instance: async (
-		props: PatchInstance & { org_id: string; instance_id: string },
-	) => {
-		return await temboClient.patchInstance({
+	patch_instance: async (request) => {
+		const { org_id, instance_id, ...props } = request.params
+			.arguments as PatchInstance & {
+			org_id: string;
+			instance_id: string;
+		};
+		const response = await temboClient.patchInstance({
 			body: { ...props },
-			path: { org_id: props.org_id, instance_id: props.instance_id },
+			path: { org_id, instance_id },
 		});
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 
-	restore_instance: async (props: RestoreInstance & { org_id: string }) => {
-		return await temboClient.restoreInstance({
+	restore_instance: async (request) => {
+		const { org_id, ...props } = request.params.arguments as RestoreInstance & {
+			org_id: string;
+		};
+		const response = await temboClient.restoreInstance({
 			body: { ...props },
-			path: { org_id: props.org_id },
+			path: { org_id },
 		});
+		return {
+			content: [
+				{
+					type: "text",
+					text: JSON.stringify(response.data ?? response.error, null, 2),
+				},
+			],
+		};
 	},
 } as const;
 
