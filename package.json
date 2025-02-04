@@ -23,6 +23,7 @@
 	],
 	"scripts": {
 		"build": "tsup && chmod +x dist/index.js",
+		"watch": "tsc-watch --onSuccess \"chmod 755 dist/index.js\"",
 		"format": "prettier .",
 		"lint": "eslint . --max-warnings 0",
 		"tsc": "tsc"
