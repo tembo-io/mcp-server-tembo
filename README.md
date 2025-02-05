@@ -1,18 +1,16 @@
 <h1 align="center">Tembo MCP Server</h1>
-
+[![smithery badge](https://smithery.ai/badge/@tembo-io/mcp-server-tembo)](https://smithery.ai/server/@tembo-io/mcp-server-tembo)
 <p align="center">A MCP server for the Tembo Cloud platform API</p>
 
-## Development
-
-```
-pnpm run build
-```
-
-```
-node index.js
-```
-
 ## Installation
+
+### Installing via Smithery
+
+To install Tembo Cloud API for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@tembo-io/mcp-server-tembo):
+
+```bash
+npx -y @smithery/cli install @tembo-io/mcp-server-tembo --client claude
+```
 
 ### Locally
 
@@ -46,3 +44,14 @@ git clone https://github.com/tembo-io/mcp-server-tembo.git
 ### Hosted version
 
 Coming soon.
+
+
+## Development
+
+```
+pnpm run build
+```
+
+```
+node index.js
+```
