@@ -27,7 +27,7 @@ FROM node:18-slim
 WORKDIR /app
 
 # Copy the built files from the builder stage
-COPY --from=builder /app/dist /app/dist
+COPY --from=builder /app/ /app/
 
 # Set environment variables
 ENV TEMBO_API_KEY=your_tembo_api_key
