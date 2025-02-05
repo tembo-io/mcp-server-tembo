@@ -1,6 +1,8 @@
 <h1 align="center">Tembo MCP Server</h1>
-[![smithery badge](https://smithery.ai/badge/@tembo-io/mcp-server-tembo)](https://smithery.ai/server/@tembo-io/mcp-server-tembo)
+
 <p align="center">A MCP server for the Tembo Cloud platform API</p>
+
+[![smithery badge](https://smithery.ai/badge/@tembo-io/mcp-server-tembo)](https://smithery.ai/server/@tembo-io/mcp-server-tembo)
 
 ## Installation
 
