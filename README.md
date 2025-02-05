@@ -45,7 +45,6 @@ git clone https://github.com/tembo-io/mcp-server-tembo.git
 
 Coming soon.
 
-
 ## Development
 
 ```
