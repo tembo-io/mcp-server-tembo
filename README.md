@@ -2,6 +2,10 @@
 
 <p align="center">An MCP server for the <a href="https://cloud.tembo.io">Tembo Cloud</a> platform API</p>
 
+<a href="https://glama.ai/mcp/servers/k0nwh3o5xu">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/k0nwh3o5xu/badge" alt="Tembo Server MCP server" />
+</a>
+
 [![smithery badge](https://smithery.ai/badge/@tembo-io/mcp-server-tembo)](https://smithery.ai/server/@tembo-io/mcp-server-tembo)
 
 ## Installation
